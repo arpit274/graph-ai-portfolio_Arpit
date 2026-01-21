@@ -56,18 +56,33 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 10%;
+            padding: 0.8rem 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(3, 7, 18, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(12px);
             z-index: 1000;
             border-bottom: 1px solid var(--card-border);
         }
 
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-profile-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-primary);
+            object-fit: cover;
+            background: #111;
+        }
+
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -76,7 +91,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .nav-links a {
@@ -106,6 +121,24 @@
             text-align: center;
         }
 
+        .hero-profile-container {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .hero-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            background-image: var(--gradient);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            padding: 4px;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.4);
+            object-fit: cover;
+        }
+
         .badge {
             background: rgba(99, 102, 241, 0.1);
             border: 1px solid rgba(99, 102, 241, 0.3);
@@ -114,7 +147,7 @@
             border-radius: 100px;
             font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             display: inline-block;
         }
 
@@ -122,15 +155,16 @@
             font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 800;
             letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             line-height: 1.1;
         }
 
         #hero p {
-            max-width: 700px;
+            max-width: 750px;
             color: var(--text-muted);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 3rem;
+            font-weight: 300;
         }
 
         /* About Section */
@@ -292,7 +326,10 @@
     <div class="blur-blob blob-2"></div>
 
     <nav>
-        <div class="logo">AJ.</div>
+        <div class="nav-left">
+            <img src="OV cart Photo.PNG" alt="Arpit Jain" class="nav-profile-img" onerror="this.style.display='none'">
+            <div class="logo">Arpit Jain</div>
+        </div>
         <div class="nav-links">
             <a href="#about">Profile</a>
             <a href="#course">The Course</a>
@@ -302,9 +339,12 @@
     </nav>
 
     <section id="hero">
+        <div class="hero-profile-container">
+            <img src="OV cart Photo.PNG" alt="Arpit Jain" class="hero-img">
+        </div>
         <span class="badge">Generative AI for Work & Research</span>
         <h1>Arpit Jain</h1>
-        <p>Commercial Growth Leader | MBA Strategy (RSM) | Tech Product Specialist. Bridging the gap between human strategy and AI-driven efficiency.</p>
+        <p>Commercial Growth Leader | MBA Strategy (RSM) | Tech Product Specialist. <br/>Bridging human strategy and AI-driven efficiency.</p>
         <div class="social-links">
             <a href="https://linkedin.com/in/arpit-jain27" target="_blank">LinkedIn</a>
             <span style="color: var(--card-border)">|</span>
