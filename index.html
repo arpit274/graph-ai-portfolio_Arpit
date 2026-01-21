@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arpit Jain | Generative AI Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #030712;
+            --accent-primary: #6366f1;
+            --accent-secondary: #a855f7;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Background Effects */
+        .blur-blob {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(60px);
+        }
+
+        .blob-1 { top: -10%; right: -5%; }
+        .blob-2 { bottom: 10%; left: -5%; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Sections Styling */
+        section {
+            padding: 8rem 10% 4rem;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--accent-primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        #hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        #hero p {
+            max-width: 700px;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* About Section */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: var(--card-border);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        /* Course Section */
+        .course-highlight {
+            background: var(--gradient);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            color: white;
+        }
+
+        /* Submissions Grid */
+        .submissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .submission-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .submission-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .submission-thumb {
+            height: 160px;
+            background: #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .submission-thumb svg {
+            width: 48px;
+            height: 48px;
+            color: var(--accent-primary);
+        }
+
+        .submission-content {
+            padding: 1.5rem;
+        }
+
+        .submission-week {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-secondary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-view {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-view:hover {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 10%;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .social-links {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 968px) {
+            .grid-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            section { padding: 6rem 5% 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blur-blob blob-1"></div>
+    <div class="blur-blob blob-2"></div>
+
+    <nav>
+        <div class="logo">AJ.</div>
+        <div class="nav-links">
+            <a href="#about">Profile</a>
+            <a href="#course">The Course</a>
+            <a href="#submissions">Submissions</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <span class="badge">Generative AI for Work & Research</span>
+        <h1>Arpit Jain</h1>
+        <p>Commercial Growth Leader | MBA Strategy (RSM) | Tech Product Specialist. Bridging the gap between human strategy and AI-driven efficiency.</p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/arpit-jain27" target="_blank">LinkedIn</a>
+            <span style="color: var(--card-border)">|</span>
+            <span>Amsterdam, NL</span>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="grid-container">
+            <div class="card">
+                <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">
+                    I am a commercial growth leader with over 6 years of experience and an MBA from Rotterdam School of Management. My career has been defined by scaling SME outreach engines, leading product launches for major OEMs like TomTom, and founding successful sustainable ventures.
+                </p>
+                <p style="color: var(--text-muted);">
+                    With a background in Computer Science, I combine technical depth with go-to-market execution. I specialize in setting up CRM automation, market mapping, and utilizing AI to cut manual effort—recently reducing operational friction by 95% in M&A workflows.
+                </p>
+                <div class="skills-container">
+                    <span class="skill-tag">Growth Strategy</span>
+                    <span class="skill-tag">Product Management</span>
+                    <span class="skill-tag">CRM & Automation</span>
+                    <span class="skill-tag">SQL & Data Analytics</span>
+                    <span class="skill-tag">JavaScript / SAP Fiori</span>
+                    <span class="skill-tag">Market Mapping</span>
+                </div>
+            </div>
+            <div class="card" style="background: linear-gradient(to bottom right, rgba(255,255,255,0.05), transparent);">
+                <h3 style="margin-bottom: 1rem;">Experience Highlights</h3>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 0.95rem;">
+                    <li style="margin-bottom: 1rem;">🚀 <strong>Growth Manager:</strong> Leading buy-side M&A outreach engines at Appelsien Holdings.</li>
+                    <li style="margin-bottom: 1rem;">🔋 <strong>Product Manager:</strong> Optimized EV routing value props for TomTom.</li>
+                    <li style="margin-bottom: 1rem;">💡 <strong>Founder:</strong> Scaled Naaya Enterprises to break-even within 12 months.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="course">
+        <h2 class="section-title">About the Course</h2>
+        <div class="card" style="max-width: 900px; margin: 0 auto;">
+            <p style="margin-bottom: 1.5rem;">
+                The <strong>Generative AI for Work & Research</strong> course is a deep dive into the practical application of LLMs and AI tools in professional environments. It focuses on:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                <div>
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Prompt Engineering</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Crafting complex, iterative prompts for high-precision output.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">AI Agents</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Building autonomous workflows that handle research and analysis.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Data Synergy</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Integrating personal data with LLMs for tailored insights.</p>
+                </div>
+            </div>
+            <div class="course-highlight">
+                <p style="font-weight: 600;">Goal: To master AI as a strategic partner, enhancing productivity and decision-making in the modern workspace.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="submissions">
+        <h2 class="section-title">Weekly Submissions</h2>
+        <div class="submissions-grid">
+            <!-- Week 1 Placeholder -->
+            <div class="submission-card">
+                <div class="submission-thumb">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <div class="submission-content">
+                    <div class="submission-week">Week 01</div>
+                    <h3>The Foundations of Prompting</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Exploration of zero-shot, few-shot, and chain-of-thought techniques.</p>
+                    <a href="#" class="btn-view">Coming Soon</a>
+                </div>
+            </div>
+
+            <!-- Week 2 Placeholder -->
+            <div class="submission-card">
+                <div class="submission-thumb">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                </div>
+                <div class="submission-content">
+                    <div class="submission-week">Week 02</div>
+                    <h3>AI in Market Research</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Using LLMs to synthesize competitive landscapes and trends.</p>
+                    <a href="#" class="btn-view">Coming Soon</a>
+                </div>
+            </div>
+
+            <!-- Week 3 Placeholder -->
+            <div class="submission-card">
+                <div class="submission-thumb">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a2 2 0 11-4 0V4zM18 14.25a2.25 2.25 0 10-4.5 0V19.5h4.5v-5.25zM7.125 19.5v-5.25a2.25 2.25 0 10-4.5 0V19.5h4.5z"></path></svg>
+                </div>
+                <div class="submission-content">
+                    <div class="submission-week">Week 03</div>
+                    <h3>Workflow Automation</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Integrating custom scripts with AI to handle repetitive tasks.</p>
+                    <a href="#" class="btn-view">Coming Soon</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="social-links">
+            <a href="https://linkedin.com/in/arpit-jain27" target="_blank">LinkedIn Profile</a>
+        </div>
+        <p>&copy; 2024 Arpit Jain. Built for Generative AI for Work & Research.</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.5;">Amsterdam | Strategy | Growth | AI</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple Fade-in effect on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = "0";
+            section.style.transform = "translateY(20px)";
+            section.style.transition = "all 0.8s ease-out";
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
