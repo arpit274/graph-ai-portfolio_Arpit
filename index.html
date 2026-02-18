@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2026/02/11/11/20260211112912-9LB5ZNY9.js" defer></script>
     <meta charset="UTF-8">
@@ -75,7 +74,6 @@
             gap: 1rem;
         }
 
-        /* Profile Image - Top Left Corner */
         .nav-profile-img {
             width: 45px;
             height: 45px;
@@ -218,15 +216,6 @@
             font-size: 0.85rem;
         }
 
-        /* Course Section */
-        .course-highlight {
-            background: var(--gradient);
-            padding: 2rem;
-            border-radius: 20px;
-            margin-top: 2rem;
-            color: white;
-        }
-
         /* Submissions Grid */
         .submissions-grid {
             display: grid;
@@ -254,7 +243,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
         }
 
         .submission-thumb svg {
@@ -294,6 +282,30 @@
             color: white;
         }
 
+        /* Consultation Section */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 2rem 0;
+        }
+
+        .iframe-wrapper {
+            width: 100%;
+            max-width: 700px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 1rem;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            border-radius: 12px;
+        }
+
         /* Footer */
         footer {
             padding: 4rem 10%;
@@ -328,7 +340,6 @@
 
     <nav>
         <div class="nav-left">
-            <!-- Arpit's Photo at the Top Left -->
             <img src="https://github.com/kendavidn/my_graph_portfolio_2/blob/main/linkedin%20photo%20-%20Kene%20David%20Nwosu%20(1).png?raw=true" alt="Arpit Jain" class="nav-profile-img">
             <div class="logo">Arpit Jain</div>
         </div>
@@ -336,6 +347,7 @@
             <a href="#about">Profile</a>
             <a href="#course">The Course</a>
             <a href="#submissions">Submissions</a>
+            <a href="#consultation">Consultation</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -404,16 +416,12 @@
                     <p style="font-size: 0.9rem; color: var(--text-muted);">Integrating personal data with LLMs for tailored insights.</p>
                 </div>
             </div>
-            <div class="course-highlight">
-                <p style="font-weight: 600;">Goal: To master AI as a strategic partner, enhancing productivity and decision-making in the modern workspace.</p>
-            </div>
         </div>
     </section>
 
     <section id="submissions">
         <h2 class="section-title">Weekly Submissions</h2>
         <div class="submissions-grid">
-            <!-- Week 1 Placeholder -->
             <div class="submission-card">
                 <div class="submission-thumb">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
@@ -425,8 +433,6 @@
                     <a href="#" class="btn-view">Coming Soon</a>
                 </div>
             </div>
-
-            <!-- Week 2 Placeholder -->
             <div class="submission-card">
                 <div class="submission-thumb">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
@@ -438,8 +444,6 @@
                     <a href="#" class="btn-view">Coming Soon</a>
                 </div>
             </div>
-
-            <!-- Week 3 Placeholder -->
             <div class="submission-card">
                 <div class="submission-thumb">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a2 2 0 11-4 0V4zM18 14.25a2.25 2.25 0 10-4.5 0V19.5h4.5v-5.25zM7.125 19.5v-5.25a2.25 2.25 0 10-4.5 0V19.5h4.5z"></path></svg>
@@ -454,6 +458,15 @@
         </div>
     </section>
 
+    <section id="consultation">
+        <h2 class="section-title">Contact for Consultation</h2>
+        <div class="form-container">
+            <div class="iframe-wrapper">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe8tdE7ZJWAm4ntXE-Z6rHTrcgqYcvEgaTiWc6ytQuRrX72HQ/viewform?embedded=true" height="820" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+    </section>
+
     <footer id="contact">
         <div class="social-links">
             <a href="https://linkedin.com/in/arpit-jain27" target="_blank">LinkedIn Profile</a>
@@ -463,7 +476,6 @@
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -473,11 +485,7 @@
             });
         });
 
-        // Simple Fade-in effect on scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
-
+        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
